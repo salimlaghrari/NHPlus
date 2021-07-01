@@ -3,7 +3,9 @@ C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\controlle
 C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\datastorage\DAO.java
 C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\datastorage\ConnectionBuilder.java
 C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\controller\AllPatientController.java
+C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\controller\LoginPflegerController.java
 C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\datastorage\DAOimp.java
+C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\datastorage\LoginDAO.java
 C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\model\Person.java
 C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\datastorage\DAOFactory.java
 C:\Users\LaghrariS\Desktop\nursing_home_student_extended\src\main\java\controller\TreatmentController.java

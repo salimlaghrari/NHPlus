@@ -3,17 +3,24 @@ package model;
 
 public class Pfleger extends Person{
     private long pfId;
-    private String telefonNumber;
+    private String telefon;
+    private String username;
+    private String password;
 
-    public Pfleger(String firstname, String surname, String telefon){
+
+    public Pfleger(String firstname, String surname, String telefon, String username, String password){
         super(firstname, surname);
-        this.telefonNumber = telefon;
+        this.telefon = telefon;
+        this.username = username;
+        this.password = password;
     }
 
-    public Pfleger(long pdId, String firstname, String surname, String telefonNumber){
+    public Pfleger(long pdId, String firstname, String surname, String telefon, String username, String password){
         super(firstname, surname);
         this.pfId = pdId;
-        this.telefonNumber = telefonNumber;
+        this.telefon = telefon;
+        this.username = username;
+        this.password = password;
     }
 
     public long getPfid() {
@@ -21,23 +28,38 @@ public class Pfleger extends Person{
     }
 
     public String getTelefonNumber(){
-        return telefonNumber;
+        return telefon;
     }
 
     public void setTelefonNumber(String telefon){
-        this.telefonNumber = telefon;
+        this.telefon = telefon;
     }
 
     public String toString() {
         return "Pfleger" + "\nMNID: " + this.pfId +
                 "\nFirstname: " + this.getFirstName() +
                 "\nSurname: " + this.getSurname() +
-                "\nTelefonnumber: " + this.telefonNumber +
+                "\nTelefonnumber: " + this.telefon +
                 "\n";
     }
 
     public String labelTreatmentView() {
-        return this.getFirstName() + " " + this.getSurname() + " " + this.telefonNumber;
+        return this.getFirstName() + " " + this.getSurname() + " " + this.telefon;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

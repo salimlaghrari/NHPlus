@@ -3,6 +3,7 @@ model\Person.class
 model\Pfleger.class
 model\Patient.class
 model\Treatment.class
+datastorage\LoginDAO.class
 datastorage\DAO.class
 controller\AllPflegerController.class
 datastorage\ConnectionBuilder.class
@@ -14,6 +15,7 @@ datastorage\PatientDAO.class
 controller\TreatmentController.class
 datastorage\DAOimp.class
 datastorage\TreatmentDAO.class
+controller\LoginPflegerController.class
 controller\MainWindowController.class
 datastorage\PflegerDAO.class
 controller\Main.class

@@ -28,4 +28,8 @@ public class DAOFactory {
     }
 
     public PflegerDAO createpPflegerDAO() { return new PflegerDAO(ConnectionBuilder.getConnection()); }
+
+    public LoginDAO createLoginDAO() { return new LoginDAO(ConnectionBuilder.getConnection()); }
+
+
 }

@@ -14,26 +14,27 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    private Stage loginStage;
     private Stage primaryStage;
 
     @Override
-    public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    public void start(Stage loginStage) {
+        this.loginStage = loginStage;
         mainWindow();
     }
 
     public void mainWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/MainWindowView.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/LoginView.fxml"));
             BorderPane pane = loader.load();
 
             Scene scene = new Scene(pane);
-            this.primaryStage.setTitle("NHPlus");
-            this.primaryStage.setScene(scene);
-            this.primaryStage.setResizable(false);
-            this.primaryStage.show();
+            this.loginStage.setTitle("NHPlus");
+            this.loginStage.setScene(scene);
+            this.loginStage.setResizable(false);
+            this.loginStage.show();
 
-            this.primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            this.loginStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent e) {
                     ConnectionBuilder.closeConnection();
@@ -46,6 +47,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
 
     public static void main(String[] args) {
         launch(args);

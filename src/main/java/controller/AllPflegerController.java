@@ -36,6 +36,12 @@ public class AllPflegerController {
     TextField txtSurname;
     @FXML
     TextField txtTelefonNumber;
+    @FXML
+    TextField txtUsername;
+    @FXML
+    TextField txtPassword;
+    @FXML
+    TextField txtConfirmPassword;
 
     private ObservableList<Pfleger> tableviewContent = FXCollections.observableArrayList();
     private PflegerDAO dao;
@@ -143,17 +149,30 @@ public class AllPflegerController {
      */
     @FXML
     public void handleAdd() {
+        boolean confirmPass = validatePassword(this.txtPassword.getText(), this.txtConfirmPassword.getText());
+
+        if(!confirmPass || this.txtUsername.getText() == "") {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Password bestätigen");
+            alert.setHeaderText("Wählen Sie ein Password mit mehr als 8 Ziffern");
+            alert.setContentText("Bitte bestätigen Sie Ihr Password");
+
+            alert.showAndWait();
+        }else{
         String firstname = this.txtFirstname.getText();
         String surname = this.txtSurname.getText();
         String telefonnumber = this.txtTelefonNumber.getText();
+        String username = this.txtUsername.getText();
+        String password = this.txtPassword.getText();
         try {
-            Pfleger p = new Pfleger(firstname, surname, telefonnumber);
+            Pfleger p = new Pfleger(firstname, surname, telefonnumber, username, password);
             dao.create(p);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         readAllAndShowInTableView();
         clearTextfields();
+        }
     }
 
     /**
@@ -163,6 +182,19 @@ public class AllPflegerController {
         this.txtFirstname.clear();
         this.txtSurname.clear();
         this.txtTelefonNumber.clear();
+        this.txtUsername.clear();
+        this.txtPassword.clear();
+        this.txtConfirmPassword.clear();
+    }
+
+
+    private boolean validatePassword(String pass, String confirmPass) {
+        if(pass.equals(confirmPass) && pass != "" && pass.length() > 8) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 }

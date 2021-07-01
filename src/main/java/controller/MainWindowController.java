@@ -43,4 +43,5 @@ public class MainWindowController {
         }
         AllTreatmentController controller = loader.getController();
     }
+
 }
