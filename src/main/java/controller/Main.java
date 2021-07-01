@@ -14,12 +14,14 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    private Stage loginStage;
     private Stage primaryStage;
 
+    /**
+     * @param primaryStage
+     */
     @Override
-    public void start(Stage loginStage) {
-        this.loginStage = loginStage;
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
         mainWindow();
     }
 
@@ -29,12 +31,12 @@ public class Main extends Application {
             BorderPane pane = loader.load();
 
             Scene scene = new Scene(pane);
-            this.loginStage.setTitle("NHPlus");
-            this.loginStage.setScene(scene);
-            this.loginStage.setResizable(false);
-            this.loginStage.show();
+            this.primaryStage.setTitle("NHPlus");
+            this.primaryStage.setScene(scene);
+            this.primaryStage.setResizable(false);
+            this.primaryStage.show();
 
-            this.loginStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            this.primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent e) {
                     ConnectionBuilder.closeConnection();
@@ -47,6 +49,12 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
+
+
+
+
+
 
 
     public static void main(String[] args) {

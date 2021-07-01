@@ -19,7 +19,7 @@ public class MainWindowController {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        AllPatientController controller = loader.getController();
+        AllPflegerController controller = loader.getController();
     }
 
     @FXML
