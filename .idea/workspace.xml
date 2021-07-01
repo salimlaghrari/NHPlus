@@ -27,8 +27,6 @@
       <change beforePath="$PROJECT_DIR$/db/nursingHomeDB.lck" beforeDir="false" afterPath="$PROJECT_DIR$/db/nursingHomeDB.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/nursingHomeDB.properties" beforeDir="false" afterPath="$PROJECT_DIR$/db/nursingHomeDB.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/nursingHomeDB.script" beforeDir="false" afterPath="$PROJECT_DIR$/db/nursingHomeDB.script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainWindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Main$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/Main.class" afterDir="false" />
     </list>
@@ -191,7 +189,7 @@
       <workItem from="1625036237284" duration="959000" />
       <workItem from="1625039630346" duration="1129000" />
       <workItem from="1625041094544" duration="1985000" />
-      <workItem from="1625084984451" duration="14173000" />
+      <workItem from="1625084984451" duration="16116000" />
     </task>
     <servers />
   </component>
