@@ -13,7 +13,9 @@ import model.Treatment;
 import utils.DateConverter;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
+/**
+ * The <code>TreatmentController</code> contains the entire logic of the patient view. It determines which data is displayed and how to react to events.
+ */
 public class TreatmentController {
     @FXML
     private Label lblPfleger;
@@ -41,7 +43,9 @@ public class TreatmentController {
     private Patient patient;
     private Pfleger pfleger;
     private Treatment treatment;
-
+    /**
+     * Initializes the corresponding fields. Is called as soon as the corresponding FXML file is to be displayed.
+     */
     public void initializeController(AllTreatmentController controller, Stage stage, Treatment treatment) {
         this.stage = stage;
         this.controller= controller;
@@ -56,7 +60,7 @@ public class TreatmentController {
             e.printStackTrace();
         }
     }
-
+    //setText zum Anzeigen der Daten in der labelTreatmentView
     private void showData(){
         this.lblPfleger.setText(pfleger.labelTreatmentView());
         this.lblPatientName.setText(patient.getSurname()+", "+patient.getFirstName());
@@ -68,7 +72,9 @@ public class TreatmentController {
         this.txtDescription.setText(this.treatment.getDescription());
         this.taRemarks.setText(this.treatment.getRemarks());
     }
-
+    /**
+     *  handles change
+     */
     @FXML
     public void handleChange(){
         this.treatment.setDate(this.datepicker.getValue().toString());
@@ -80,7 +86,9 @@ public class TreatmentController {
         controller.readAllAndShowInTableView();
         stage.close();
     }
-
+    /**
+     * Update
+     */
     private void doUpdate(){
         TreatmentDAO dao = DAOFactory.getDAOFactory().createTreatmentDAO();
         try {
@@ -89,7 +97,9 @@ public class TreatmentController {
             e.printStackTrace();
         }
     }
-
+    /**
+     *  handles for Cancel
+     */
     @FXML
     public void handleCancel(){
         stage.close();

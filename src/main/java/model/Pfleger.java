@@ -47,6 +47,10 @@ public class Pfleger extends Person{
         return this.getFirstName() + " " + this.getSurname() + " " + this.telefon;
     }
 
+    public String labelLoggedView() {
+        return this.getFirstName() + " " + this.getSurname();
+    }
+
     public String getUsername() {
         return username;
     }

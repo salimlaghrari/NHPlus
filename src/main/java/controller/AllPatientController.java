@@ -36,7 +36,7 @@ public class AllPatientController {
     private TableColumn<Patient, String> colRoom;
 
     @FXML
-    Button btnDelete;
+    Button btnLock;
     @FXML
     Button btnAdd;
     @FXML
@@ -164,18 +164,17 @@ public class AllPatientController {
     /**
      * handles a delete-click-event. Calls the delete methods in the {@link PatientDAO} and {@link TreatmentDAO}
      */
-    @FXML
-    public void handleDeleteRow() {
-        TreatmentDAO tDao = DAOFactory.getDAOFactory().createTreatmentDAO();
-        Patient selectedItem = this.tableView.getSelectionModel().getSelectedItem();
-        try {
-            tDao.deleteByPid(selectedItem.getPid());
-            dao.deleteById(selectedItem.getPid());
-            this.tableView.getItems().remove(selectedItem);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        public void handleLockRow() {
+            TreatmentDAO tDao = DAOFactory.getDAOFactory().createTreatmentDAO();
+            Patient selectedItem = this.tableView.getSelectionModel().getSelectedItem();
+            try {
+                tDao.LockById(selectedItem.getPid());
+                dao.LockById(selectedItem.getPid());
+                this.tableView.getItems().remove(selectedItem);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
     /**
      * handles a add-click-event. Creates a patient and calls the create method in the {@link PatientDAO}

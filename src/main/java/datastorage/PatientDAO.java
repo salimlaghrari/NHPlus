@@ -1,6 +1,7 @@
 package datastorage;
 
 import model.Patient;
+import model.Treatment;
 import utils.DateConverter;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,11 +27,13 @@ public class PatientDAO extends DAOimp<Patient> {
      * @param patient for which a specific INSERT INTO is to be created
      * @return <code>String</code> with the generated SQL.
      */
+
     @Override
     protected String getCreateStatementString(Patient patient) {
-        return String.format("INSERT INTO patient (firstname, surname, dateOfBirth, carelevel, roomnumber) VALUES ('%s', '%s', '%s', '%s', '%s')",
+        return String.format("INSERT INTO patient (firstname, surname, dateOfBirth, careLevel, roomNumber, toDeleteDate) VALUES ('%s', '%s', '%s', '%s', '%s',current_date+10 YEAR);",
                 patient.getFirstName(), patient.getSurname(), patient.getDateOfBirth(), patient.getCareLevel(), patient.getRoomnumber());
     }
+
 
     /**
      * generates a <code>select</code>-Statement for a given key
@@ -62,9 +65,10 @@ public class PatientDAO extends DAOimp<Patient> {
      * @return <code>String</code> with the generated SQL.
      */
     @Override
-    protected String getReadAllStatementString() {
-        return "SELECT * FROM patient";
+    protected String getReadAllStatementString () {
+        return "delete from patient where toDeleteDate <= current_date;\n"+"SELECT * FROM patient where lock = true";
     }
+
 
     /**
      * maps a <code>ResultSet</code> to a <code>Patient-List</code>
@@ -92,8 +96,8 @@ public class PatientDAO extends DAOimp<Patient> {
      */
     @Override
     protected String getUpdateStatementString(Patient patient) {
-        return String.format("UPDATE patient SET firstname = '%s', surname = '%s', dateOfBirth = '%s', carelevel = '%s', " +
-                "roomnumber = '%s' WHERE pid = %d", patient.getFirstName(), patient.getSurname(), patient.getDateOfBirth(),
+        return String.format("UPDATE patient SET firstname = '%s', surname = '%s', dateOfBirth = '%s', careLevel = '%s', " +
+                "roomNumber = '%s' WHERE pid = %d", patient.getFirstName(), patient.getSurname(), patient.getDateOfBirth(),
                 patient.getCareLevel(), patient.getRoomnumber(), patient.getPid());
     }
 
@@ -106,4 +110,17 @@ public class PatientDAO extends DAOimp<Patient> {
     protected String getDeleteStatementString(long key) {
         return String.format("Delete FROM patient WHERE pid=%d", key);
     }
+
+    @Override
+    protected String getLockStatementString ( long key) {
+        return String.format("Update patient SET lock = false WHERE pid = %d", key);
+    }
+
+    @Override
+    protected String getLockStatementStringTreatment ( long key) {
+        return String.format("Update treatment SET lock = false WHERE pid = %d", key);
+    }
+
+
+
 }

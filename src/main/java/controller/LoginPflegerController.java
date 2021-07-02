@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * The <code>LoginPflegerController</code> contains the entire logic of the patient view. It determines which data is displayed and how to react to events.
+
+ */
 
 public class LoginPflegerController extends Main{
 
@@ -26,7 +30,9 @@ public class LoginPflegerController extends Main{
     Label wronglogin;
 
     private LoginDAO dao;
-    private Pfleger pfleger;
+    public Pfleger pfleger;
+
+    // Validation Username, Password
 
     public void validateFields() throws SQLException, IOException {
 
@@ -56,10 +62,11 @@ public class LoginPflegerController extends Main{
                 Scene scene = new Scene(pane);
                 Stage loginStage = (Stage)username.getScene().getWindow();
                 loginStage.setScene(scene);
+                MainWindowController m = new MainWindowController();
+                m.addPfleger(this.pfleger);
                 clearForm();
             }
         }
-
     }
 
     private void clearForm() {
@@ -67,6 +74,10 @@ public class LoginPflegerController extends Main{
         this.username.clear();
         this.wronglogin.setText("");
     }
+
+
+
+
 
 
 }

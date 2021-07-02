@@ -14,4 +14,6 @@ public interface DAO<T> {
 
     void deleteById(long key) throws SQLException;
 
+    void LockById(long key) throws SQLException;
+
 }

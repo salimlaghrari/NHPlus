@@ -21,6 +21,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The <code>AllTreatmentController</code> contains the entire logic of the patient view. It determines which data is displayed and how to react to events.
+ */
+
 public class AllTreatmentController {
     @FXML
     private TableView<Treatment> tableView;
@@ -56,6 +60,10 @@ public class AllTreatmentController {
     private ArrayList<Pfleger> pflegerList;
     private Main main;
 
+    /**
+     * Initializes the corresponding fields. Is called as soon as the corresponding FXML file is to be displayed.
+     */
+
     public void initialize() {
         readAllAndShowInTableView();
 
@@ -66,13 +74,14 @@ public class AllTreatmentController {
         comboBoxPfleger.getSelectionModel().select(0);
 
         this.main = main;
-
+        //CellValuefactory zum Anzeigen der Daten in der TableView
         this.colID.setCellValueFactory(new PropertyValueFactory<Treatment, Integer>("tid"));
         this.colPid.setCellValueFactory(new PropertyValueFactory<Treatment, Integer>("pid"));
         this.colDate.setCellValueFactory(new PropertyValueFactory<Treatment, String>("date"));
         this.colBegin.setCellValueFactory(new PropertyValueFactory<Treatment, String>("begin"));
         this.colEnd.setCellValueFactory(new PropertyValueFactory<Treatment, String>("end"));
         this.colDescription.setCellValueFactory(new PropertyValueFactory<Treatment, String>("description"));
+        //Anzeigen der Daten
         this.tableView.setItems(this.tableviewContent);
 
         createComboBoxData();
@@ -93,7 +102,9 @@ public class AllTreatmentController {
             e.printStackTrace();
         }
     }
-
+    /**
+    * Create comboBoxData for Patient
+     */
     private void createComboBoxData(){
         PatientDAO dao = DAOFactory.getDAOFactory().createPatientDAO();
         try {
@@ -107,7 +118,9 @@ public class AllTreatmentController {
         }
     }
 
-
+    /**
+     * handles get all data from patient in comboBox
+     */
     @FXML
     public void handleComboBox(){
         String p = this.comboBox.getSelectionModel().getSelectedItem();
@@ -137,6 +150,9 @@ public class AllTreatmentController {
         }
     }
 
+    /**
+     * Create comboBoxData for Pfleger
+     */
     private void createComboBoxDataPfleger(){
         PflegerDAO dao = DAOFactory.getDAOFactory().createpPflegerDAO();
         try {
@@ -149,7 +165,9 @@ public class AllTreatmentController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * handles read all Pfleger in comboBox
+     */
     @FXML
     public void handleComboBoxPfleger(){
         String p = this.comboBoxPfleger.getSelectionModel().getSelectedItem();
@@ -178,7 +196,11 @@ public class AllTreatmentController {
             }
         }
     }
-
+    /**
+     * get Patient List from Patient Table in ComboBox
+     * @param surname
+     * @return
+     */
     private Patient searchInList(String surname){
         for (int i =0; i<this.patientList.size();i++){
             if(this.patientList.get(i).getSurname().equals(surname)){
@@ -187,7 +209,11 @@ public class AllTreatmentController {
         }
         return null;
     }
-
+    /**
+     * get Patient List from Patient Table in ComboBox
+     * @param surname
+     * @return
+     */
     private Pfleger searchInListPfleger(String surname){
         for (int i =0; i<this.pflegerList.size();i++){
             if(this.pflegerList.get(i).getSurname().equals(surname)){
@@ -196,7 +222,9 @@ public class AllTreatmentController {
         }
         return null;
     }
-
+    /**
+     * handles Delete ByID
+     */
     @FXML
     public void handleDelete(){
         int index = this.tableView.getSelectionModel().getSelectedIndex();
@@ -209,6 +237,9 @@ public class AllTreatmentController {
         }
     }
 
+    /**
+     * handles to creating new Treatment
+     */
     @FXML
     public void handleNewTreatment() {
         try{
@@ -226,7 +257,9 @@ public class AllTreatmentController {
             alert.showAndWait();
         }
     }
-
+    /**
+     * handles MouseClick
+     */
     @FXML
     public void handleMouseClick(){
         tableView.setOnMouseClicked(event -> {
@@ -238,7 +271,11 @@ public class AllTreatmentController {
             }
         });
     }
-
+    /**
+     * Creating new Treatment
+     * @param patient
+     * @param pfleger
+     */
     public void newTreatmentWindow(Patient patient, Pfleger pfleger){
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/NewTreatmentView.fxml"));
@@ -258,7 +295,10 @@ public class AllTreatmentController {
             e.printStackTrace();
         }
     }
-
+    /**
+     *
+     * @param treatment
+     */
     public void treatmentWindow(Treatment treatment){
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/TreatmentView.fxml"));

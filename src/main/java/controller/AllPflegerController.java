@@ -13,6 +13,9 @@ import datastorage.DAOFactory;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * The <code>AllPflegerController</code> contains the entire logic of the patient view. It determines which data is displayed and how to react to events.
+ */
 public class AllPflegerController {
 
     @FXML
@@ -187,6 +190,12 @@ public class AllPflegerController {
         this.txtConfirmPassword.clear();
     }
 
+    /**
+     *
+     * @param pass
+     * @param confirmPass
+     * @return
+     */
 
     private boolean validatePassword(String pass, String confirmPass) {
         if(pass.equals(confirmPass) && pass != "" && pass.length() > 8) {

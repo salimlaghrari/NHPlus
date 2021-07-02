@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * The <code>NewTreatmentController</code> contains the entire logic of the patient view. It determines which data is displayed and how to react to events.
+ */
 public class NewTreatmentController {
     @FXML
     private Label lblSurname;
@@ -40,7 +43,9 @@ public class NewTreatmentController {
     private Patient patient;
     private Pfleger pfleger;
     private Stage stage;
-
+    /**
+     * Initializes the corresponding fields. Is called as soon as the corresponding FXML file is to be displayed.
+     */
     public void initialize(AllTreatmentController controller, Stage stage, Patient patient, Pfleger pfleger) {
         this.controller= controller;
         this.patient = patient;
@@ -49,17 +54,23 @@ public class NewTreatmentController {
         showPatientData();
         showPflegerData();
     }
-
+    /**
+     * get Patient data
+     */
     private void showPatientData(){
         this.lblFirstname.setText(patient.getFirstName());
         this.lblSurname.setText(patient.getSurname());
     }
-
+    /**
+     * get Pfleger Data
+     */
     private void showPflegerData(){
         this.lblFirstnamePfleger.setText(pfleger.getFirstName());
         this.lblSurnamePfleger.setText(pfleger.getSurname());
     }
-
+    /**
+     *
+     */
     @FXML
     public void handleAdd(){
         LocalDate date = this.datepicker.getValue();
@@ -74,7 +85,10 @@ public class NewTreatmentController {
         controller.readAllAndShowInTableView();
         stage.close();
     }
-
+    /**
+     * Create new Treatment
+     * @param treatment
+     */
     private void createTreatment(Treatment treatment) {
         TreatmentDAO dao = DAOFactory.getDAOFactory().createTreatmentDAO();
         try {
@@ -83,7 +97,9 @@ public class NewTreatmentController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * handles Cancel
+     */
     @FXML
     public void handleCancel(){
         stage.close();

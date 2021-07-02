@@ -17,7 +17,7 @@ public class Patient extends Person {
 
     /**
      * constructs a patient from the given params.
-     * @param firstName
+     * @param firstname
      * @param surname
      * @param dateOfBirth
      * @param careLevel
@@ -33,7 +33,7 @@ public class Patient extends Person {
     /**
      * constructs a patient from the given params.
      * @param pid
-     * @param firstName
+     * @param firstname
      * @param surname
      * @param dateOfBirth
      * @param careLevel
@@ -116,6 +116,7 @@ public class Patient extends Person {
         }
         return false;
     }
+
 
     /**
      *
